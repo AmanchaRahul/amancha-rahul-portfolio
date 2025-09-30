@@ -4,6 +4,7 @@ import AshaModel from './3d/AshaModel';
 import DripsmithModel from './3d/DripsmithModel';
 import EVAgentModel from './3d/EVAgentModel';
 import SkillocoModel from './3d/SkillocoModel';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function ProjectsSection() {
   const projects = [
@@ -81,13 +82,14 @@ export default function ProjectsSection() {
                     className={`bg-gradient-to-br ${project.color} bg-card p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden`}
                   >
                     <div className="grid md:grid-cols-2 gap-8 items-center">
-                      {/* 3D Model */}
                       <motion.div
                         className="h-64 md:h-80 rounded-2xl overflow-hidden bg-charcoal-dark/50"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Model />
+                        <ErrorBoundary>
+                          <Model />
+                        </ErrorBoundary>
                       </motion.div>
 
                       {/* Project Details */}

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { ChevronDown } from 'lucide-react';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function HomeSection() {
   const scrollToAbout = () => {
@@ -15,21 +16,23 @@ export default function HomeSection() {
       style={{ background: 'linear-gradient(135deg, hsl(var(--dark-olive)), hsl(var(--muted-olive)))' }}
     >
       {/* 3D Background */}
-      <div className="absolute inset-0 opacity-30">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <Sphere args={[2, 64, 64]} position={[0, 0, 0]}>
-            <MeshDistortMaterial
-              color="hsl(27, 32%, 36%)"
-              distort={0.4}
-              speed={2}
-              roughness={0.4}
-            />
-          </Sphere>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+      <ErrorBoundary>
+        <div className="absolute inset-0 opacity-30">
+          <Canvas>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <Sphere args={[2, 64, 64]} position={[0, 0, 0]}>
+              <MeshDistortMaterial
+                color="hsl(27, 32%, 36%)"
+                distort={0.4}
+                speed={2}
+                roughness={0.4}
+              />
+            </Sphere>
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+          </Canvas>
+        </div>
+      </ErrorBoundary>
 
       {/* Content */}
       <motion.div
