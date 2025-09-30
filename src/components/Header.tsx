@@ -51,7 +51,7 @@ export default function Header() {
             transition={{ duration: 0.2 }}
           />
           <motion.h1
-            className="text-xl md:text-2xl font-heading text-brown-light cursor-pointer tracking-wide"
+            className="text-xl md:text-2xl font-heading text-cream-accent cursor-pointer tracking-wide"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('home')}
           >
@@ -69,7 +69,7 @@ export default function Header() {
             >
               <button
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-brown-light smooth-transition font-heading text-sm tracking-wider uppercase"
+                className="text-foreground hover:text-cream-accent smooth-transition font-heading text-sm tracking-wider uppercase"
               >
                 {item.label}
               </button>
@@ -107,7 +107,7 @@ export default function Header() {
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className="w-full text-left px-6 py-3 text-foreground hover:text-brown-light hover:bg-muted/20 smooth-transition font-heading tracking-wide"
+                    className="w-full text-left px-6 py-3 text-foreground hover:text-cream-accent hover:bg-muted/20 smooth-transition font-heading tracking-wide"
                   >
                     {item.label}
                   </button>
