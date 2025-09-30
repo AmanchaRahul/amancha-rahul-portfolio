@@ -50,6 +50,7 @@ export default {
         },
         brown: {
           warm: "hsl(var(--warm-brown))",
+          light: "hsl(var(--warm-brown-light))",
         },
         charcoal: {
           DEFAULT: "hsl(var(--dusty-charcoal))",
