@@ -16,7 +16,7 @@ export default function SkillsSection() {
     {
       icon: Database,
       title: 'Databases & Backend',
-      skills: ['PostgreSQL', 'Supabase', 'Firebase', 'Convex', 'Django REST Framework'],
+      skills: ['PostgreSQL', 'Supabase', 'Firebase', 'Convex', 'Django Web Framework'],
     },
     {
       icon: Cpu,

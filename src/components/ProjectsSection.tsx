@@ -1,10 +1,46 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import AshaModel from './3d/AshaModel';
-import DripsmithModel from './3d/DripsmithModel';
-import EVAgentModel from './3d/EVAgentModel';
-import SkillocoModel from './3d/SkillocoModel';
-import ErrorBoundary from '@/components/ErrorBoundary';
+import ImageGallery from './ImageGallery';
+
+// Import Asha screenshots
+import asha1 from '@/assets/asha/1.jpg';
+import asha2 from '@/assets/asha/2.jpg';
+import asha3 from '@/assets/asha/3.jpg';
+import asha4 from '@/assets/asha/WhatsApp Image 2025-09-30 at 18.32.22_0a214b6d.jpg';
+import asha5 from '@/assets/asha/WhatsApp Image 2025-09-30 at 18.32.23_574b3992.jpg';
+import asha6 from '@/assets/asha/WhatsApp Image 2025-09-30 at 18.32.23_c1123175.jpg';
+import asha7 from '@/assets/asha/WhatsApp Image 2025-09-30 at 18.32.24_d9b6949f.jpg';
+import asha8 from '@/assets/asha/WhatsApp Image 2025-09-30 at 18.32.25_46f3e979.jpg';
+
+// Import Dripsmith screenshots
+import dripsmith1 from '@/assets/dripsmith/1.png';
+import dripsmith2 from '@/assets/dripsmith/2.png';
+import dripsmith3 from '@/assets/dripsmith/3.png';
+import dripsmith4 from '@/assets/dripsmith/Screenshot (814).png';
+import dripsmith5 from '@/assets/dripsmith/Screenshot (848).png';
+import dripsmith6 from '@/assets/dripsmith/Screenshot (850).png';
+import dripsmith7 from '@/assets/dripsmith/Screenshot (861).png';
+import dripsmith8 from '@/assets/dripsmith/Screenshot (862).png';
+
+// Import EV Agent screenshots
+import evAgent1 from '@/assets/ev-agent/Screenshot (1354).png';
+import evAgent2 from '@/assets/ev-agent/Screenshot (1355).png';
+import evAgent3 from '@/assets/ev-agent/Screenshot (1357).png';
+import evAgent4 from '@/assets/ev-agent/Screenshot (1359).png';
+import evAgent5 from '@/assets/ev-agent/Screenshot (1362).png';
+import evAgent6 from '@/assets/ev-agent/Screenshot (1363).png';
+import evAgent7 from '@/assets/ev-agent/Screenshot (1364).png';
+import evAgent8 from '@/assets/ev-agent/Screenshot (1365).png';
+
+// Import Skilloco screenshots
+import skilloco1 from '@/assets/skilloco/1.jpg';
+import skilloco2 from '@/assets/skilloco/2.jpg';
+import skilloco3 from '@/assets/skilloco/3.jpg';
+import skilloco4 from '@/assets/skilloco/4.jpg';
+import skilloco5 from '@/assets/skilloco/8.jpg';
+import skilloco6 from '@/assets/skilloco/9.jpg';
+import skilloco7 from '@/assets/skilloco/12.jpg';
+import skilloco8 from '@/assets/skilloco/13.jpg';
 
 export default function ProjectsSection() {
   const projects = [
@@ -15,8 +51,8 @@ export default function ProjectsSection() {
       description:
         'Comprehensive health management app for diabetes, blood pressure, and skincare with personalized diets, exercises, real-time chat, AI chatbot integration, and health news.',
       github: 'https://github.com/AmanchaRahul/Asha-Health',
-      Model: AshaModel,
-      color: 'from-red-900/20 to-pink-900/20',
+      live: 'https://asha2.onrender.com',
+      images: [asha1, asha2, asha3, asha4, asha5, asha6, asha7, asha8],
     },
     {
       title: 'Dripsmith - Clothing Platform',
@@ -24,9 +60,8 @@ export default function ProjectsSection() {
       tech: 'Vite, Google Image Generation API, Razorpay, 3D Modeling',
       description:
         'AI-driven clothing design generator with 3D previews, instant downloads, and subscription management for personalized fashion experiences.',
-      live: '#',
-      Model: DripsmithModel,
-      color: 'from-purple-900/20 to-blue-900/20',
+      live: 'https://dripsmith.vercel.app/',
+      images: [dripsmith1, dripsmith2, dripsmith3, dripsmith4, dripsmith5, dripsmith6, dripsmith7, dripsmith8],
     },
     {
       title: 'EV Agent - Electric Vehicle Hub',
@@ -34,9 +69,8 @@ export default function ProjectsSection() {
       tech: 'Vite, Supabase, Google Maps API, n8n, SerperAPI, Sarvam AI',
       description:
         'Complete toolkit for EV owners featuring AI chatbot, battery analytics, charging station maps, and localized news for electric vehicle enthusiasts.',
-      live: '#',
-      Model: EVAgentModel,
-      color: 'from-green-900/20 to-teal-900/20',
+      live: 'https://ev-agent.vercel.app/',
+      images: [evAgent1, evAgent2, evAgent3, evAgent4, evAgent5, evAgent6, evAgent7, evAgent8],
     },
     {
       title: 'Skilloco - Skill-Based Social Network',
@@ -44,9 +78,8 @@ export default function ProjectsSection() {
       tech: 'React Native, Expo Go, Convex, Supabase, Agora SDK',
       description:
         'Social media platform connecting users by skills with secure location sharing, real-time video/voice calls, and privacy-focused networking.',
-      live: '#',
-      Model: SkillocoModel,
-      color: 'from-orange-900/20 to-yellow-900/20',
+      live: 'https://drive.google.com/file/d/1Oe7PlhF8jqsyutYDFfyMhCabi0mdw2Ch/view?usp=sharing',
+      images: [skilloco1, skilloco2, skilloco3, skilloco4, skilloco5, skilloco6, skilloco7, skilloco8],
     },
   ];
 
@@ -67,83 +100,73 @@ export default function ProjectsSection() {
           </p>
 
           <div className="space-y-24">
-            {projects.map((project, index) => {
-              const Model = project.Model;
-              return (
-                <motion.div
-                  key={project.title}
-                  className="relative"
-                  initial={{ opacity: 0, y: 80 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                >
-                  <div
-                    className={`bg-gradient-to-br ${project.color} bg-card p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden`}
-                  >
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                      <motion.div
-                        className="h-64 md:h-80 rounded-2xl overflow-hidden bg-charcoal-dark/50"
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <ErrorBoundary>
-                          <Model />
-                        </ErrorBoundary>
-                      </motion.div>
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                className="relative"
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <div className="bg-card p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden border border-border/30">
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    {/* Image Gallery */}
+                    <div>
+                      <ImageGallery images={project.images} title={project.title} />
+                    </div>
 
-                      {/* Project Details */}
-                      <div className="space-y-4">
-                        <div>
-                          <h3 className="text-3xl md:text-4xl font-heading text-primary mb-2">
-                            {project.title}
-                          </h3>
-                          <p className="text-muted-foreground text-sm">{project.date}</p>
-                        </div>
+                    {/* Project Details */}
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-3xl md:text-4xl font-heading text-primary mb-2">
+                          {project.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">{project.date}</p>
+                      </div>
 
-                        <p className="text-card-foreground text-lg leading-relaxed">
-                          {project.description}
-                        </p>
+                      <p className="text-card-foreground text-lg leading-relaxed">
+                        {project.description}
+                      </p>
 
-                        <div className="pt-2">
-                          <p className="text-sm text-muted-foreground mb-2">Tech Stack:</p>
-                          <p className="text-primary font-medium">{project.tech}</p>
-                        </div>
+                      <div className="pt-2">
+                        <p className="text-sm text-muted-foreground mb-2">Tech Stack:</p>
+                        <p className="text-primary font-medium">{project.tech}</p>
+                      </div>
 
-                        <div className="flex gap-4 pt-4">
-                          {project.github && (
-                            <motion.a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 smooth-transition"
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <Github size={20} />
-                              GitHub
-                            </motion.a>
-                          )}
-                          {project.live && (
-                            <motion.a
-                              href={project.live}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground smooth-transition"
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <ExternalLink size={20} />
-                              Live Demo
-                            </motion.a>
-                          )}
-                        </div>
+                      <div className="flex gap-4 pt-4">
+                        {project.github && (
+                          <motion.a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 smooth-transition"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Github size={20} />
+                            GitHub
+                          </motion.a>
+                        )}
+                        {project.live && (
+                          <motion.a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground smooth-transition"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <ExternalLink size={20} />
+                            Live Demo
+                          </motion.a>
+                        )}
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

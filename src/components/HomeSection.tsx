@@ -65,7 +65,7 @@ export default function HomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          Software Developer & AI Enthusiast
+          Web Developer & AI Practitioner
         </motion.p>
 
         <motion.p
@@ -74,8 +74,8 @@ export default function HomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          Building innovative apps with React Native, Django, and AI integrations. 
-          Specializing in mobile development and algorithmic trading.
+          Building innovative web applications with React Native, Django, and AI integrations.
+          Specializing in mobile development and AI-powered solutions.
         </motion.p>
 
         <motion.button

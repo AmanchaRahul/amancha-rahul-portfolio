@@ -1,73 +1,113 @@
-# Welcome to your Lovable project
+# Amancha Rahul - Portfolio Website
 
-## Project info
+A modern, responsive portfolio showcasing web development and AI projects built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/22df7fcf-4d23-4713-8d17-869377ff317e
+## 🌟 Live Demo
 
-## How can I edit this code?
+Visit the live portfolio at: [Your Vercel URL will go here after deployment]
 
-There are several ways of editing your application.
+## 📋 About
 
-**Use Lovable**
+This portfolio showcases my work as a Web Developer and AI Practitioner, featuring:
+- 🚀 Interactive project gallery with real app screenshots
+- 🤖 AI/ML development projects
+- 📱 Mobile app development showcases
+- 💬 Functional contact form with EmailJS integration
+- ✨ Smooth animations and modern UI/UX
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/22df7fcf-4d23-4713-8d17-869377ff317e) and start prompting.
+## 🛠️ Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend Framework:** React 18 with TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS with custom design system
+- **UI Components:** shadcn/ui, Radix UI
+- **Animations:** Framer Motion
+- **3D Graphics:** Three.js with React Three Fiber
+- **Form Integration:** EmailJS
+- **Routing:** React Router DOM
+- **State Management:** TanStack Query
 
-**Use your preferred IDE**
+## 📂 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```
+portfolio/
+├── src/
+│   ├── assets/          # Project screenshots and images
+│   ├── components/      # React components
+│   │   ├── 3d/         # 3D model components
+│   │   └── ui/         # Reusable UI components
+│   ├── pages/          # Page components
+│   ├── lib/            # Utility functions
+│   └── hooks/          # Custom React hooks
+├── public/             # Static assets
+└── index.html          # Entry HTML file
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v16 or higher)
+- npm or yarn
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd amancha-rahul-portfolio
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and visit `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Build for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The optimized production build will be in the `dist` folder.
 
-## What technologies are used for this project?
+## 🌐 Deployment
 
-This project is built with:
+This project is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel for automatic deployments.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📧 Contact Form Setup
 
-## How can I deploy this project?
+The contact form uses EmailJS. To configure:
 
-Simply open [Lovable](https://lovable.dev/projects/22df7fcf-4d23-4713-8d17-869377ff317e) and click on Share -> Publish.
+1. Create an account at [EmailJS](https://www.emailjs.com/)
+2. Set up a service and template
+3. Update credentials in `src/components/ContactSection.tsx`
 
-## Can I connect a custom domain to my Lovable project?
+## 📱 Featured Projects
 
-Yes, you can!
+- **Asha** - Health-focused web application
+- **Dripsmith** - AI-driven clothing design platform
+- **EV Agent** - Electric vehicle hub with AI chatbot
+- **Skilloco** - Skill-based social networking app
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 👨‍💻 Author
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Amancha Rahul**
+- Email: amancharahul25@gmail.com
+- LinkedIn: [amancha-rahul](https://www.linkedin.com/in/amancha-rahul-a2b265217/)
+- GitHub: [AmanchaRahul](https://github.com/AmanchaRahul)
+
+## 📄 License
+
+© 2025 Amancha Rahul. All rights reserved.
+
+---
+
+Built with ❤️ using React, TypeScript, and Tailwind CSS

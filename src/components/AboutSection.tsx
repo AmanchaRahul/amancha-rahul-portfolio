@@ -49,13 +49,13 @@ export default function AboutSection() {
               <div>
                 <h3 className="text-2xl font-heading text-primary mb-4">Based in Hyderabad, India</h3>
                 <p className="text-card-foreground text-lg leading-relaxed mb-4">
-                  I'm a passionate software developer with expertise in AI/ML development, mobile app development, 
-                  and algorithmic trading. With a strong foundation in full-stack technologies, I create innovative 
+                  I'm a passionate web developer and AI practitioner with expertise in AI/ML development and
+                  mobile app development. With a strong foundation in full-stack technologies, I create innovative
                   solutions that bridge cutting-edge technology with real-world applications.
                 </p>
                 <p className="text-card-foreground text-lg leading-relaxed">
-                  My journey in tech has been driven by curiosity and a desire to build products that make a difference. 
-                  From health-focused applications to AI-driven platforms, I enjoy tackling complex problems and 
+                  My journey in tech has been driven by curiosity and a desire to build products that make a difference.
+                  From health-focused applications to AI-driven platforms, I enjoy tackling complex problems and
                   delivering production-ready solutions.
                 </p>
               </div>

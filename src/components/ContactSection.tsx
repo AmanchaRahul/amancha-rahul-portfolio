@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from '@/components/ui/sonner';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -8,11 +10,32 @@ export default function ContactSection() {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.send(
+        'service_ny9kgfb',
+        'template_8pf4w0c',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        'QhA67z7FxfkoWDemQ'
+      );
+
+      toast.success('Message sent successfully! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message. Please try again or contact me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -31,8 +54,8 @@ export default function ContactSection() {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'amancharahul',
-      href: 'https://www.linkedin.com/in/amancharahul',
+      value: 'amancha-rahul',
+      href: 'https://www.linkedin.com/in/amancha-rahul-a2b265217/',
     },
     {
       icon: Github,
@@ -150,12 +173,13 @@ export default function ContactSection() {
 
                 <motion.button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 smooth-transition shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 smooth-transition shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
                   <Send size={20} />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </motion.div>
@@ -170,7 +194,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground">
-              © 2025 Amancha Rahul. Built with React, Tailwind CSS, and Framer Motion.
+              © 2025 Amancha Rahul. All rights reserved.
             </p>
           </motion.div>
         </motion.div>
