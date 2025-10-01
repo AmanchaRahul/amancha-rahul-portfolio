@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import profileImage from '@/assets/profile.jpg';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +8,7 @@ export default function Header() {
 
   useState(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -31,27 +30,25 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: scrolled ? 1 : 0.95 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-6 left-0 right-0 z-50 px-4 md:px-8"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-6"
+      style={{
+        background: 'linear-gradient(135deg, hsl(var(--dark-olive)), hsl(var(--muted-olive)))',
+      }}
     >
-      <nav 
-        className={`max-w-5xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center bg-dark-olive rounded-full border border-border/50 backdrop-blur-md smooth-transition ${
-          scrolled ? 'shadow-2xl' : 'shadow-lg'
+      <nav
+        className={`max-w-5xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center bg-charcoal-black/95 rounded-full border backdrop-blur-md smooth-transition ${
+          scrolled ? 'shadow-2xl border-gold-soft/30' : 'shadow-lg border-border/50'
         }`}
+        role="navigation"
+        aria-label="Main navigation"
       >
-        {/* Profile Picture & Logo */}
+        {/* Logo */}
         <div className="flex items-center gap-4">
-          <motion.img
-            src={profileImage}
-            alt="Profile"
-            className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-brown-warm object-cover shadow-lg"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.2 }}
-          />
           <motion.h1
-            className="text-xl md:text-2xl font-heading text-cream-accent cursor-pointer tracking-wide"
+            className="text-xl md:text-2xl font-heading text-gold-soft cursor-pointer tracking-wide"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('home')}
           >
@@ -69,7 +66,8 @@ export default function Header() {
             >
               <button
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-cream-accent smooth-transition font-heading text-sm tracking-wider uppercase"
+                className="text-foreground hover:text-gold-soft smooth-transition font-heading text-sm tracking-wider uppercase"
+                aria-label={`Navigate to ${item.label} section`}
               >
                 {item.label}
               </button>
@@ -77,9 +75,10 @@ export default function Header() {
           ))}
           <motion.button
             onClick={() => scrollToSection('contact')}
-            className="px-6 py-2 bg-cream-accent text-brown-warm font-heading text-sm tracking-wider uppercase rounded-full shadow-md hover:shadow-lg smooth-transition"
+            className="px-6 py-2 bg-gold-soft text-charcoal-dark font-heading text-sm tracking-wider uppercase rounded-full shadow-md hover:shadow-xl smooth-transition hover:bg-gold-soft/90"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Navigate to contact section"
           >
             Let's Chat
           </motion.button>
@@ -107,7 +106,8 @@ export default function Header() {
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className="w-full text-left px-6 py-3 text-foreground hover:text-cream-accent hover:bg-muted/20 smooth-transition font-heading tracking-wide"
+                    className="w-full text-left px-6 py-3 text-foreground hover:text-gold-soft hover:bg-muted/20 smooth-transition font-heading tracking-wide"
+                    aria-label={`Navigate to ${item.label} section`}
                   >
                     {item.label}
                   </button>
@@ -116,7 +116,8 @@ export default function Header() {
               <li className="px-4 py-3">
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="w-full px-6 py-2 bg-cream-accent text-brown-warm font-heading text-sm tracking-wider uppercase rounded-full shadow-md"
+                  className="w-full px-6 py-2 bg-gold-soft text-charcoal-dark font-heading text-sm tracking-wider uppercase rounded-full shadow-md hover:shadow-lg hover:bg-gold-soft/90 smooth-transition"
+                  aria-label="Navigate to contact section"
                 >
                   Let's Chat
                 </button>

@@ -8,9 +8,19 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    projectType: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const projectTypes = [
+    'AI/ML Development',
+    'App Deployment',
+    'Full-Stack Development',
+    'Algorithmic Trading',
+    'Mobile App Development',
+    'Other',
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,13 +33,14 @@ export default function ContactSection() {
         {
           from_name: formData.name,
           from_email: formData.email,
+          project_type: formData.projectType,
           message: formData.message,
         },
         'QhA67z7FxfkoWDemQ'
       );
 
       toast.success('Message sent successfully! I\'ll get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', projectType: '', message: '' });
     } catch (error) {
       console.error('EmailJS error:', error);
       toast.error('Failed to send message. Please try again or contact me directly.');
@@ -107,8 +118,8 @@ export default function ContactSection() {
                     viewport={{ once: true }}
                     whileHover={{ x: 10 }}
                   >
-                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 smooth-transition">
-                      <Icon className="text-primary" size={24} />
+                    <div className="p-3 bg-gold-soft/10 rounded-lg group-hover:bg-gold-soft/20 smooth-transition">
+                      <Icon className="text-gold-soft" size={24} />
                     </div>
                     <div>
                       <p className="text-muted-foreground text-sm">{item.label}</p>
@@ -136,7 +147,7 @@ export default function ContactSection() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary smooth-transition"
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-soft smooth-transition"
                     placeholder="Your name"
                     required
                   />
@@ -151,10 +162,28 @@ export default function ContactSection() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary smooth-transition"
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-soft smooth-transition"
                     placeholder="your.email@example.com"
                     required
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="projectType" className="block text-foreground mb-2 font-medium">
+                    Project Type
+                  </label>
+                  <select
+                    id="projectType"
+                    value={formData.projectType}
+                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-soft smooth-transition"
+                    required
+                  >
+                    <option value="" disabled>Select a project type...</option>
+                    {projectTypes.map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
@@ -165,7 +194,7 @@ export default function ContactSection() {
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-primary smooth-transition"
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-gold-soft smooth-transition"
                     placeholder="Tell me about your project or idea..."
                     required
                   />
@@ -174,9 +203,10 @@ export default function ContactSection() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 smooth-transition shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-gold-soft text-charcoal-dark px-8 py-4 rounded-lg font-semibold hover:bg-gold-soft/90 smooth-transition shadow-lg hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  aria-label="Send message"
                 >
                   <Send size={20} />
                   {isSubmitting ? 'Sending...' : 'Send Message'}

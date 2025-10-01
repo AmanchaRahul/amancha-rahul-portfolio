@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(del:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Read(//c/Users/amanc_p8t3567/OneDrive/Pictures/Screenshots 1/**)"
     ],
     "deny": [],
     "ask": []

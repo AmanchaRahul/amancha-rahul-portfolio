@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Anton', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['Archivo Black', 'Anton', 'sans-serif'],
+        body: ['Work Sans', 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,6 +51,9 @@ export default {
         brown: {
           warm: "hsl(var(--warm-brown))",
           light: "hsl(var(--warm-brown-light))",
+        },
+        gold: {
+          soft: "hsl(var(--soft-gold))",
         },
         charcoal: {
           DEFAULT: "hsl(var(--dusty-charcoal))",

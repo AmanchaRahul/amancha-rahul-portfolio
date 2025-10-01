@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Briefcase } from 'lucide-react';
+import { GraduationCap, MapPin, Briefcase, Heart, Film, Dumbbell } from 'lucide-react';
 
 export default function AboutSection() {
   const education = [
@@ -49,15 +49,41 @@ export default function AboutSection() {
               <div>
                 <h3 className="text-2xl font-heading text-primary mb-4">Based in Hyderabad, India</h3>
                 <p className="text-card-foreground text-lg leading-relaxed mb-4">
-                  I'm a passionate web developer and AI practitioner with expertise in AI/ML development and
-                  mobile app development. With a strong foundation in full-stack technologies, I create innovative
-                  solutions that bridge cutting-edge technology with real-world applications.
+                  I'm a passionate AI/ML engineer and full-stack developer with expertise in building innovative
+                  AI-driven applications and algorithmic trading systems. With a strong foundation in React Native,
+                  Django, and cutting-edge ML technologies, I create solutions that bridge advanced technology with
+                  real-world impact.
                 </p>
-                <p className="text-card-foreground text-lg leading-relaxed">
+                <p className="text-card-foreground text-lg leading-relaxed mb-6">
                   My journey in tech has been driven by curiosity and a desire to build products that make a difference.
-                  From health-focused applications to AI-driven platforms, I enjoy tackling complex problems and
+                  From health-focused applications to AI-powered platforms, I enjoy tackling complex problems and
                   delivering production-ready solutions.
                 </p>
+
+                {/* Personal Interests with Gold Accents */}
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <motion.div
+                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
+                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
+                  >
+                    <Dumbbell className="text-gold-soft" size={20} />
+                    <span className="text-gold-soft font-medium">UFC & Fitness</span>
+                  </motion.div>
+                  <motion.div
+                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
+                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
+                  >
+                    <Film className="text-gold-soft" size={20} />
+                    <span className="text-gold-soft font-medium">Sci-Fi Movies</span>
+                  </motion.div>
+                  <motion.div
+                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
+                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
+                  >
+                    <Heart className="text-gold-soft" size={20} />
+                    <span className="text-gold-soft font-medium">Tech Experiments</span>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

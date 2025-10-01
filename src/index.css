@@ -17,6 +17,7 @@
     --warm-brown-light: 25 85% 65%;
     --charcoal-black: 60 11% 13%;
     --cream-accent: 45 30% 85%;
+    --soft-gold: 43 79% 53%; /* #D4AF37 */
     
     /* Semantic Tokens */
     --background: var(--muted-olive);
@@ -25,8 +26,8 @@
     --card: var(--charcoal-black);
     --card-foreground: var(--cream-accent);
     
-    --primary: var(--warm-brown);
-    --primary-foreground: var(--cream-accent);
+    --primary: var(--soft-gold);
+    --primary-foreground: var(--charcoal-black);
     
     --secondary: var(--gray-olive);
     --secondary-foreground: var(--cream-accent);
@@ -60,12 +61,15 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Work Sans', 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Archivo Black', 'Anton', sans-serif;
     letter-spacing: 0.02em;
+    font-weight: 900;
   }
   
   .section-padding {
@@ -79,5 +83,30 @@
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Manual reduced motion toggle */
+  html.reduce-motion *,
+  html.reduce-motion *::before,
+  html.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html.reduce-motion {
+    scroll-behavior: auto !important;
   }
 }
