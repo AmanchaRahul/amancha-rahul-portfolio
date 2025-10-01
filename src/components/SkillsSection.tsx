@@ -21,7 +21,7 @@ export default function SkillsSection() {
     {
       icon: Cpu,
       title: 'AI & Automation',
-      skills: ['Image Generation APIs', 'AI Chatbots', 'n8n', 'Make.com', 'Sarvam AI', 'Deepgram'],
+      skills: ['Cursor', 'Claude Code', 'Image Generation APIs', 'AI Chatbots', 'n8n', 'Make.com', 'Sarvam AI', 'Deepgram'],
     },
     {
       icon: Cloud,

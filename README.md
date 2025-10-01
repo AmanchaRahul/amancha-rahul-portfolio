@@ -109,5 +109,3 @@ The contact form uses EmailJS. To configure:
 © 2025 Amancha Rahul. All rights reserved.
 
 ---
-
-Built with ❤️ using React, TypeScript, and Tailwind CSS
