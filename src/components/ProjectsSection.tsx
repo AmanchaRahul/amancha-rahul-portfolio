@@ -174,10 +174,10 @@ export default function ProjectsSection() {
                             className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-gold-soft text-gold-soft rounded-lg font-semibold hover:bg-gold-soft hover:text-charcoal-dark smooth-transition shadow-md hover:shadow-xl"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            aria-label={`View ${project.title} live demo`}
+                            aria-label={`View ${project.title} ${project.title.includes('Skilloco') ? 'app link' : 'live demo'}`}
                           >
                             <ExternalLink size={20} />
-                            Live Demo
+                            {project.title.includes('Skilloco') ? 'App Link' : 'Live Demo'}
                           </motion.a>
                         )}
                       </div>

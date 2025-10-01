@@ -35,9 +35,9 @@ export default function HomeSection() {
         </div>
       </ErrorBoundary>
 
-      {/* Stamp-sized Profile Picture for Mobile - Top Right Corner */}
+      {/* Stamp-sized Profile Picture for Mobile - Lower Right Position */}
       <motion.div
-        className="md:hidden absolute top-20 right-4 z-20"
+        className="md:hidden absolute top-32 right-6 z-20"
         initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
@@ -122,13 +122,13 @@ export default function HomeSection() {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 text-center px-6 max-w-5xl"
+        className="relative z-10 text-center px-6 max-w-5xl pt-8 md:pt-0"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
         <motion.p
-          className="text-primary text-lg md:text-xl mb-4 font-medium tracking-wide"
+          className="text-primary text-lg md:text-xl mb-4 font-medium tracking-wide mt-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}

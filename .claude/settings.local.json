@@ -3,7 +3,8 @@
     "allow": [
       "Bash(del:*)",
       "Bash(npm install:*)",
-      "Read(//c/Users/amanc_p8t3567/OneDrive/Pictures/Screenshots 1/**)"
+      "Read(//c/Users/amanc_p8t3567/OneDrive/Pictures/Screenshots 1/**)",
+      "Read(//c/Users/amanc_p8t3567/Downloads/**)"
     ],
     "deny": [],
     "ask": []
