@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -87,6 +88,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
       </div>
 
       {/* Modal */}
+      {createPortal(
       <AnimatePresence>
         {selectedImageIndex !== null && (
           <motion.div
@@ -190,7 +192,9 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </>
   );
 }
