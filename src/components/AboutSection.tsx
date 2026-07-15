@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Briefcase, Heart, Film, Dumbbell } from 'lucide-react';
+import { GraduationCap, MapPin, Briefcase } from 'lucide-react';
 
 export default function AboutSection() {
   const education = [
@@ -49,41 +49,17 @@ export default function AboutSection() {
               <div>
                 <h3 className="text-2xl font-heading text-primary mb-4">Based in Hyderabad, India</h3>
                 <p className="text-card-foreground text-lg leading-relaxed mb-4">
-                  I'm a passionate AI/ML engineer and full-stack developer with expertise in building innovative
-                  AI-driven applications and algorithmic trading systems. With a strong foundation in React Native,
-                  Django, and cutting-edge ML technologies, I create solutions that bridge advanced technology with
-                  real-world impact.
+                  I'm a full-stack developer skilled in Python/Django and React, with freelance and contract
+                  experience shipping web applications end-to-end — backend APIs, payment integrations, real-time
+                  features, and AI-powered product features. I'm comfortable with Supabase and Firebase for auth,
+                  storage, and realtime data.
                 </p>
                 <p className="text-card-foreground text-lg leading-relaxed mb-6">
-                  My journey in tech has been driven by curiosity and a desire to build products that make a difference.
-                  From health-focused applications to AI-powered platforms, I enjoy tackling complex problems and
-                  delivering production-ready solutions.
+                  I use AI-assisted development tools like Claude Code and Cursor to build and ship faster, while
+                  still owning the architecture and doing my own debugging. From health-focused applications to
+                  coaching platforms and automation workflows, I enjoy tackling complex problems and delivering
+                  production-ready solutions.
                 </p>
-
-                {/* Personal Interests with Gold Accents */}
-                <div className="flex flex-wrap gap-4 mt-6">
-                  <motion.div
-                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
-                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
-                  >
-                    <Dumbbell className="text-gold-soft" size={20} />
-                    <span className="text-gold-soft font-medium">UFC & Fitness</span>
-                  </motion.div>
-                  <motion.div
-                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
-                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
-                  >
-                    <Film className="text-gold-soft" size={20} />
-                    <span className="text-gold-soft font-medium">Sci-Fi Movies</span>
-                  </motion.div>
-                  <motion.div
-                    className="flex items-center gap-2 px-4 py-2 bg-gold-soft/10 border border-gold-soft/30 rounded-full"
-                    whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 79%, 53%, 0.15)" }}
-                  >
-                    <Heart className="text-gold-soft" size={20} />
-                    <span className="text-gold-soft font-medium">Tech Experiments</span>
-                  </motion.div>
-                </div>
               </div>
             </div>
           </motion.div>
@@ -133,9 +109,12 @@ export default function AboutSection() {
               <div>
                 <h3 className="text-2xl font-heading text-primary mb-4">Professional Experience</h3>
                 <p className="text-card-foreground text-lg leading-relaxed">
-                  Experienced in freelance development work and building production-ready side projects. 
-                  Skilled at working independently and collaborating with teams to deliver high-quality solutions. 
-                  Specialized in Django backends, React Native mobile apps, and AI integrations.
+                  Experienced in freelance and contract development, building and maintaining backend integrations
+                  and full-stack web applications for clients — including API connectivity and deployment support.
+                  I've built n8n-based automation workflows (email, image generation, document/PDF extraction) to
+                  streamline client processes, and delivered rapid prototypes for AI-enabled features, including a
+                  Telegram-based assistant and client web apps. Specialized in Django backends, React Native/React
+                  mobile and web apps, and AI integrations.
                 </p>
               </div>
             </div>

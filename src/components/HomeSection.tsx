@@ -111,7 +111,7 @@ export default function HomeSection() {
         >
           <img
             src={profileImage}
-            alt="Rahul Amancha - AI/ML Engineer and Full-Stack Developer"
+            alt="Rahul Amancha - Full-Stack Developer"
             className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover rounded-2xl border-4 border-gold-soft shadow-2xl"
           />
           {/* Decorative Corner Accent */}
@@ -161,7 +161,7 @@ export default function HomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          AI/ML Engineer & Full-Stack Developer
+          Full-Stack Developer
         </motion.p>
 
         <motion.p
@@ -170,8 +170,8 @@ export default function HomeSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          Building innovative AI-powered applications with React Native, Django, and cutting-edge ML technologies.
-          Passionate about algorithmic trading, fitness (UFC enthusiast), and sci-fi movies.
+          Skilled in Python/Django and React, shipping web applications end-to-end — backend APIs, payment
+          integrations, real-time features, and AI-powered product features using Supabase and Firebase.
         </motion.p>
 
         <motion.button

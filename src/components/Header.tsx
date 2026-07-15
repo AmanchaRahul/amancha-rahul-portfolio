@@ -26,12 +26,13 @@ export default function Header() {
     { label: 'About', id: 'about' },
     { label: 'Skills', id: 'skills' },
     { label: 'Projects', id: 'projects' },
+    { label: 'Automations', id: 'automations' },
   ];
 
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: scrolled ? 1 : 0.95 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-6"
       style={{
@@ -39,7 +40,7 @@ export default function Header() {
       }}
     >
       <nav
-        className={`max-w-5xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center bg-charcoal-black/95 rounded-full border backdrop-blur-md smooth-transition ${
+        className={`max-w-5xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center bg-charcoal-dark/95 rounded-full border backdrop-blur-md smooth-transition ${
           scrolled ? 'shadow-2xl border-gold-soft/30' : 'shadow-lg border-border/50'
         }`}
         role="navigation"
@@ -99,7 +100,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 bg-dark-olive/98 backdrop-blur-md border border-border rounded-3xl md:hidden overflow-hidden shadow-2xl"
+            className="absolute top-full left-4 right-4 mt-4 bg-charcoal-dark border border-border rounded-3xl md:hidden overflow-hidden shadow-2xl"
           >
             <ul className="flex flex-col py-2">
               {navItems.map((item) => (

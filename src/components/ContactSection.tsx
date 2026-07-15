@@ -14,10 +14,10 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const projectTypes = [
-    'AI/ML Development',
-    'App Deployment',
     'Full-Stack Development',
-    'Algorithmic Trading',
+    'AI/ML Development',
+    'n8n Automation / Workflow',
+    'App Deployment',
     'Mobile App Development',
     'Other',
   ];
@@ -224,7 +224,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground">
-              © 2025 Amancha Rahul. All rights reserved.
+              © 2026 Amancha Rahul. All rights reserved.
             </p>
           </motion.div>
         </motion.div>

@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, GraduationCap, Lock, ChevronLeft, ChevronRight } from 'lucide-react';
 import ImageGallery from './ImageGallery';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
 
 // Import Asha screenshots
 import asha1 from '@/assets/asha/1.jpg';
@@ -42,15 +44,141 @@ import skilloco6 from '@/assets/skilloco/9.jpg';
 import skilloco7 from '@/assets/skilloco/12.jpg';
 import skilloco8 from '@/assets/skilloco/13.jpg';
 
+type Project = {
+  title: string;
+  date: string;
+  tech: string;
+  description: string;
+  metrics?: string;
+  github?: string;
+  live?: string;
+  images: string[];
+};
+
+function ProjectCardContent({ project }: { project: Project }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-8 items-center">
+      {/* Image Gallery */}
+      <div>
+        {project.images.length > 0 ? (
+          <ImageGallery images={project.images} title={project.title} />
+        ) : (
+          <div className="aspect-video rounded-xl bg-muted/20 border border-gold-soft/20 flex flex-col items-center justify-center gap-3 p-8 text-center">
+            <GraduationCap className="text-gold-soft" size={48} />
+            <p className="text-card-foreground font-medium">{project.title}</p>
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <Lock size={14} />
+              <span>Private client project — screenshots unavailable</span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Project Details */}
+      <div className="space-y-4">
+        <div>
+          <h3 className="text-3xl md:text-4xl font-heading text-primary mb-2">
+            {project.title}
+          </h3>
+          <p className="text-gold-soft text-sm font-semibold">{project.date}</p>
+        </div>
+
+        <p className="text-card-foreground text-lg leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Metrics Display with Gold Accent */}
+        {project.metrics && (
+          <div className="pt-2 pb-2">
+            <p className="text-gold-soft text-sm font-semibold italic leading-relaxed">
+              {project.metrics}
+            </p>
+          </div>
+        )}
+
+        <div className="pt-2">
+          <p className="text-sm text-muted-foreground mb-2">Tech Stack:</p>
+          <p className="text-primary font-medium">{project.tech}</p>
+        </div>
+
+        <div className="flex gap-4 pt-4">
+          {project.github && (
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 bg-gold-soft text-charcoal-dark rounded-lg font-semibold hover:bg-gold-soft/90 smooth-transition shadow-md hover:shadow-xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={`View ${project.title} on GitHub`}
+            >
+              <Github size={20} />
+              GitHub
+            </motion.a>
+          )}
+          {project.live && (
+            <motion.a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-gold-soft text-gold-soft rounded-lg font-semibold hover:bg-gold-soft hover:text-charcoal-dark smooth-transition shadow-md hover:shadow-xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={`View ${project.title} ${project.title.includes('Skilloco') ? 'app link' : 'live demo'}`}
+            >
+              <ExternalLink size={20} />
+              {project.title.includes('Skilloco') ? 'App Link' : 'Live Demo'}
+            </motion.a>
+          )}
+          {!project.github && !project.live && (
+            <div className="flex items-center gap-2 px-6 py-3 bg-muted/30 text-muted-foreground rounded-lg font-medium text-sm">
+              <Lock size={16} />
+              Delivered privately for client
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectsSection() {
-  const projects = [
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+    api.on('select', () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
+  const projects: Project[] = [
+    {
+      title: 'Learn with Sanu - Coaching Platform',
+      date: 'Jun 2026',
+      tech: 'React 18, TypeScript, Vite, Tailwind CSS v4, Supabase (PostgreSQL, Realtime, Auth, Edge Functions), Resend, Framer Motion, shadcn/ui, Recharts',
+      description:
+        'A full-stack coaching platform delivered for a paying client, handling 100+ student enrollments through a multi-step UPI payment flow. Built a real-time admin dashboard with Supabase Realtime for session management, communications, and revenue tracking across 50+ active sessions, with backend logic in Supabase Edge Functions and automated enrollment/session emails via Resend.',
+      metrics: '100+ student enrollments • Real-time admin dashboard • 50+ active sessions tracked • Automated email flows',
+      images: [],
+    },
+    {
+      title: 'Skilloco - Skill-Based Social Network',
+      date: 'Aug 2025',
+      tech: 'React Native, Expo Go, Convex, Supabase, Agora SDK',
+      description:
+        'Mobile social network built with React Native, featuring real-time video/voice calling via Agora SDK, secure location-based skill matching, and end-to-end encrypted messaging.',
+      metrics: 'Agora SDK video calls • Real-time sync with Convex • Secure location sharing',
+      live: 'https://drive.google.com/file/d/1Oe7PlhF8jqsyutYDFfyMhCabi0mdw2Ch/view?usp=sharing',
+      images: [skilloco1, skilloco2, skilloco3, skilloco4, skilloco5, skilloco6, skilloco7, skilloco8],
+    },
     {
       title: 'Asha - Health-Focused App',
       date: 'Dec 2024',
-      tech: 'Python, Django, HTML, CSS, AI Chatbot, News API',
+      tech: 'Python, Django, Django Channels, Redis, Cloudinary, Google OAuth, News API',
       description:
-        'Comprehensive health management platform featuring AI chatbot for personalized health advice, real-time patient-doctor communication, and condition-specific diet/exercise plans. Integrated News API for latest health updates.',
-      metrics: 'AI-powered health recommendations • Real-time chat system • Multi-condition support',
+        'A Django health app covering diabetes, blood pressure, and skincare workflows for 30+ users. Real-time patient-doctor chat is powered by Django Channels and Redis, handling 20+ concurrent sessions. Includes Google OAuth sign-in, Cloudinary media handling for user-uploaded content, and a News API integration surfacing the latest health updates.',
+      metrics: 'Real-time chat (Django Channels + Redis) • Google OAuth sign-in • Cloudinary media uploads • Live health news feed',
       github: 'https://github.com/AmanchaRahul/Asha-Health',
       live: 'https://asha2.onrender.com',
       images: [asha1, asha2, asha3, asha4, asha5, asha6, asha7, asha8],
@@ -75,16 +203,6 @@ export default function ProjectsSection() {
       live: 'https://ev-agent.vercel.app/',
       images: [evAgent1, evAgent2, evAgent3, evAgent4, evAgent5, evAgent6, evAgent7, evAgent8],
     },
-    {
-      title: 'Skilloco - Skill-Based Social Network',
-      date: 'Aug 2025',
-      tech: 'React Native, Expo Go, Convex, Supabase, Agora SDK',
-      description:
-        'Mobile social network built with React Native, featuring real-time video/voice calling via Agora SDK, secure location-based skill matching, and end-to-end encrypted messaging.',
-      metrics: 'Agora SDK video calls • Real-time sync with Convex • Secure location sharing',
-      live: 'https://drive.google.com/file/d/1Oe7PlhF8jqsyutYDFfyMhCabi0mdw2Ch/view?usp=sharing',
-      images: [skilloco1, skilloco2, skilloco3, skilloco4, skilloco5, skilloco6, skilloco7, skilloco8],
-    },
   ];
 
   return (
@@ -100,10 +218,11 @@ export default function ProjectsSection() {
             FEATURED PROJECTS
           </h2>
           <p className="text-muted-foreground text-lg mb-16 max-w-2xl">
-            Innovative applications spanning health tech, AI-driven design, electric vehicles, and social networking
+            Full-stack applications spanning health tech, AI-driven design, electric vehicles, coaching platforms, and social networking
           </p>
 
-          <div className="space-y-24">
+          {/* Desktop: stacked list */}
+          <div className="hidden md:block space-y-24">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -118,74 +237,58 @@ export default function ProjectsSection() {
                   className="bg-card p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden border border-border/30 hover:border-gold-soft/50 smooth-transition"
                   whileHover={{ boxShadow: "0 25px 50px -12px rgba(212, 175, 55, 0.25)" }}
                 >
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
-                    {/* Image Gallery */}
-                    <div>
-                      <ImageGallery images={project.images} title={project.title} />
-                    </div>
-
-                    {/* Project Details */}
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-3xl md:text-4xl font-heading text-primary mb-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-gold-soft text-sm font-semibold">{project.date}</p>
-                      </div>
-
-                      <p className="text-card-foreground text-lg leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      {/* Metrics Display with Gold Accent */}
-                      {project.metrics && (
-                        <div className="pt-2 pb-2">
-                          <p className="text-gold-soft text-sm font-semibold italic leading-relaxed">
-                            {project.metrics}
-                          </p>
-                        </div>
-                      )}
-
-                      <div className="pt-2">
-                        <p className="text-sm text-muted-foreground mb-2">Tech Stack:</p>
-                        <p className="text-primary font-medium">{project.tech}</p>
-                      </div>
-
-                      <div className="flex gap-4 pt-4">
-                        {project.github && (
-                          <motion.a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-gold-soft text-charcoal-dark rounded-lg font-semibold hover:bg-gold-soft/90 smooth-transition shadow-md hover:shadow-xl"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            aria-label={`View ${project.title} on GitHub`}
-                          >
-                            <Github size={20} />
-                            GitHub
-                          </motion.a>
-                        )}
-                        {project.live && (
-                          <motion.a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-gold-soft text-gold-soft rounded-lg font-semibold hover:bg-gold-soft hover:text-charcoal-dark smooth-transition shadow-md hover:shadow-xl"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            aria-label={`View ${project.title} ${project.title.includes('Skilloco') ? 'app link' : 'live demo'}`}
-                          >
-                            <ExternalLink size={20} />
-                            {project.title.includes('Skilloco') ? 'App Link' : 'Live Demo'}
-                          </motion.a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                  <ProjectCardContent project={project} />
                 </motion.div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile: swipeable carousel */}
+          <div className="md:hidden">
+            <div className="relative">
+              <Carousel setApi={setApi} opts={{ align: 'start' }}>
+                <CarouselContent>
+                  {projects.map((project) => (
+                    <CarouselItem key={project.title}>
+                      <div className="bg-card p-6 rounded-3xl shadow-2xl overflow-hidden border border-border/30">
+                        <ProjectCardContent project={project} />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+
+              <button
+                onClick={() => api?.scrollPrev()}
+                disabled={current === 0}
+                className="absolute left-1 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-charcoal-dark/80 border border-gold-soft/50 text-gold-soft backdrop-blur-sm shadow-lg disabled:opacity-30 smooth-transition"
+                aria-label="Previous project"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => api?.scrollNext()}
+                disabled={current === projects.length - 1}
+                className="absolute right-1 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-charcoal-dark/80 border border-gold-soft/50 text-gold-soft backdrop-blur-sm shadow-lg disabled:opacity-30 smooth-transition"
+                aria-label="Next project"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Dot indicators */}
+            <div className="flex justify-center gap-2 mt-6">
+              {projects.map((project, index) => (
+                <button
+                  key={project.title}
+                  onClick={() => api?.scrollTo(index)}
+                  className={`h-2 rounded-full smooth-transition ${
+                    index === current ? 'w-6 bg-gold-soft' : 'w-2 bg-muted-foreground/40'
+                  }`}
+                  aria-label={`Go to project ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Let's Collaborate CTA */}
